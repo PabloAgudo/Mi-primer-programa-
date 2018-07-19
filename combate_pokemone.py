@@ -1,37 +1,68 @@
 
 
 vida_pika = 100
-vida_bulbasur = 120
-vida_charmander = 80
-vida_squirtel = 100
+vida_enemiga = 0
+ataque_enemigo = 0
 
-daño_bulbasur = 7
-daño_charmander = 12
-daño_squirtel = 10
+pokemon_elegido = (input("Contra quien quieres pelear??  (bulbasur/ charmander/ squirtel) : "))
 
+if pokemon_elegido == "bulbasur":
+    vida_enemiga = 120
+    ataque_enemigo = 7
+    pokemon_elegido = "Bulbasur"
+    print("Has elejido a Bulbasur")
 
-enemigo = input("Contra quien quieres pelear??  (Bulbasur/Charmander/Squirtel):").upper()
-print(enemigo)
+elif pokemon_elegido == "charmander":
+    vida_enemiga = 80
+    ataque_enemigo = 12
+    pokemon_elegido = "Charmander"
+    print("Has elejido a Charmander")
 
-if enemigo == "BULBASUR":
-    vida_enemiga = vida_bulbasur
-    ataque_enemigo = daño_bulbasur
-if enemigo == "CHARMANDER":
-    vida_enemiga = vida_charmander
-    ataque_enemigo = daño_charmander
-if enemigo == "SQUIRTEL":
-    vida_enemiga = vida_squirtel
-    ataque_enemigo = daño_squirtel
+elif pokemon_elegido == "squirtel":
+    vida_enemiga = 100
+    ataque_enemigo = 10
+    pokemon_elegido = "Squirtel"
+    print("Has elejido a Squirtel")
+
 else:
-    print("Dato Incorrecto. Elegire un pokimon Aleatorio")
-    vida_enemiga = vida_charmander
-    ataque_enemigo = daño_charmander
-    enemigo = "CHARMANDER"
+    print("Dato Incorrecto. Elijo yo Pokimon")
+    vida_enemiga = 80
+    ataque_enemigo = 12
+    pokemon_elegido = "Charmander"
+    print("Te a Tocado a Charmander")
 
-print("Has Elegido a {}".format(enemigo))
 print("Preparate para la batalla")
 
 
+while vida_pika > 0 and vida_enemiga > 0 :
 
-print(vida_enemiga)
-print(ataque_enemigo)
+    print("Tu turno")
+    ataque = input("Elije ataque (Rayito / Escupio): ")
+
+    if ataque == "Rayito":
+        vida_enemiga -= 10
+        print("{} Sufre 10 de Daño".format(pokemon_elegido))
+        print("Vida enemiga:{}".format(vida_enemiga))
+    else:
+        if vida_enemiga < 20:
+            vida_enemiga = 0
+            print("CRITICO")
+            print("Vida enemiga:{}".format(vida_enemiga))
+        else:
+            vida_enemiga -=7
+            print("{} Sufre 7 de Daño".format(pokemon_elegido))
+            print("Vida enemiga:{}".format(vida_enemiga))
+
+    if vida_enemiga > 0:
+        print("Turno Enemigo")
+        vida_pika -= ataque_enemigo
+        print("Recives {} de Daño".format(ataque_enemigo))
+        print("Tienes {} de Vida".format(vida_pika))
+
+
+
+
+if vida_pika > 0:
+    print("GANASTE")
+if vida_enemiga > 0:
+    print("PERDISTE")
