@@ -42,16 +42,14 @@ while vida_pika > 0 and vida_enemiga > 0 :
     if ataque == "Rayito":
         vida_enemiga -= 10
         print("{} Sufre 10 de Daño".format(pokemon_elegido))
-        print("Vida enemiga:{}".format(vida_enemiga))
     else:
         if vida_enemiga < 20:
             vida_enemiga = 0
             print("CRITICO")
-            print("Vida enemiga:{}".format(vida_enemiga))
         else:
             vida_enemiga -=7
             print("{} Sufre 7 de Daño".format(pokemon_elegido))
-            print("Vida enemiga:{}".format(vida_enemiga))
+    print("Vida enemiga:{}".format(vida_enemiga))
 
     if vida_enemiga > 0:
         print("Turno Enemigo")
