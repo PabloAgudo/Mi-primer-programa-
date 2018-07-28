@@ -11,4 +11,4 @@ while input_usuario != "FIN":
 for item in mi_lista:
     print("Compra {}".format(item))
 
-print("Esta es tu lista")
+print(mi_lista[2])
